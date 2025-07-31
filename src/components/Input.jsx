@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 const Input = forwardRef(
-  ({ label, type = "text", className = "", ref, ...props }) => {
+  ({ label, type = "text", className = "", ...props }, ref) => {
     return (
       <div>
         {label && <label className="">{label}</label>}

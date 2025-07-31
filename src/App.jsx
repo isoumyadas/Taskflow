@@ -1,11 +1,11 @@
 import "./App.css";
-import Login from "./components/Login";
+import Layout from "./components/Layout";
 
 function App() {
   return (
-    <>
-      <Login />
-    </>
+    <div>
+      <Layout />
+    </div>
   );
 }
 

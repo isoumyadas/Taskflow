@@ -1,4 +1,4 @@
-import conf from "../conf/conf";
+import conf from "../conf/conf.js";
 import { Client, Account, ID } from "appwrite";
 
 const client = new Client()
@@ -29,9 +29,12 @@ const createAccount = async ({ email, password, username }) => {
 
 const userLogin = async ({ email, password }) => {
   try {
-    return await account.createEmailPasswordSession(email, password);
+    console.log("juh");
+    const loggedIn = await account.createEmailPasswordSession(email, password);
+    console.log("LoogedIn:: ", loggedIn);
+    return loggedIn;
   } catch (error) {
-    `Appwrite auth:: userLogin :: error => ${error.message}`;
+    throw new Error(`Appwrite auth:: userLogin :: error => ${error.message}`);
   }
 };
 
@@ -40,7 +43,9 @@ const getCurrentUser = async () => {
     const userData = await account.get();
     return userData;
   } catch (error) {
-    `Appwrite auth:: getCurrentUser :: error => ${error.message}`;
+    throw new Error(
+      `Appwrite auth:: getCurrentUser :: error => ${error.message}`
+    );
   }
 };
 
@@ -48,7 +53,7 @@ const logout = async () => {
   try {
     return await account.deleteSessions();
   } catch (error) {
-    `Appwrite auth:: userLogout :: error => ${error.message}`;
+    throw new Error(`Appwrite auth:: userLogout :: error => ${error.message}`);
   }
 };
 
